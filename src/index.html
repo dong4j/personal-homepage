@@ -33,17 +33,15 @@
         padding: 0;
         height: 100%;
         font-family: Arial, sans-serif;
-        overflow-y: hidden; /* 隐藏垂直滚动条 */
+        overflow: hidden; /* 隐藏滚动条 */
       }
 
       .content-wrapper {
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
-        min-height: 100vh; /* 确保占据整个视口高度 */
+        height: 100%; /* 确保占据整个视口高度 */
       }
 
       #background-scene {
@@ -58,27 +56,11 @@
         z-index: -1;
       }
 
-      @media (max-width: 500px) {
-        #background-scene {
-          gap: 10px; /* 减小间距以适应小屏幕 */
-          top: 20vh;
-          height: calc(100vh - 40px);
-        }
-        .link-list {
-          list-style: none;
-          display: flex;
-          justify-content: center;
-          padding: 0;
-          position: relative;
-          margin-top: 250px;
-        }
-      }
-
       .profile {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 10vh; /* Position profile in the middle of viewport */
+        margin-top: 10vh; /* 让个人资料位于视口中间 */
         z-index: 10;
       }
 
@@ -106,23 +88,13 @@
         justify-content: center;
         gap: 40px;
         padding: 0;
-        position: relative;
         margin-top: 250px;
       }
-
-      /* .link-list::before {
-        content: "";
-        position: absolute;
-        top: -15px;
-        width: calc(100vw - 80px);
-        height: 1px;
-        background-color: #ddd;
-      } */
 
       .link-list a {
         color: #666;
         text-decoration: none;
-        font-size: 24px; /* 增加图标大小 */
+        font-size: 24px; /* 图标大小 */
       }
 
       .link-list a:hover {
@@ -130,7 +102,7 @@
       }
 
       footer {
-        height: 60px; /* Adjust based on your needs */
+        height: 60px; /* 适配底部区域 */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -149,6 +121,27 @@
 
       footer a:hover {
         text-decoration: underline;
+      }
+
+      @media (max-width: 500px) {
+        #background-scene {
+          top: 20vh;
+          height: calc(100vh - 40px);
+        }
+        .link-list {
+          display: flex;
+          align-items: center;
+          padding: 0;
+          margin: 130px 0; /* 减小顶部间距 */
+          gap: 20px; /* 减小图标之间的间距 */
+        }
+
+        .link-list a {
+          font-size: 20px; /* 调整图标大小以适配小屏幕 */
+        }
+        .profile {
+          margin-top: 25vh; /* 在移动端调整为更小的顶部间距 */
+        }
       }
     </style>
   </head>
