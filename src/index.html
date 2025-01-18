@@ -34,24 +34,28 @@
         height: 100%;
         font-family: Arial, sans-serif;
         overflow: hidden; /* 隐藏滚动条 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       .content-wrapper {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-        height: 100%; /* 确保占据整个视口高度 */
+        justify-content: center;
+        flex-grow: 1; /* 使内容填满剩余空间 */
+        position: relative;
       }
 
       #background-scene {
         position: absolute;
-        top: 5vh;
+        top: 20vh;
         left: 0;
         right: 0;
         bottom: 0;
         width: 100%;
-        height: calc(100vh - 45px);
+        height: 100%;
         pointer-events: none;
         z-index: -1;
       }
@@ -60,7 +64,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 10vh; /* 让个人资料位于视口中间 */
+        margin-top: -50vh; /* 让个人资料在屏幕中间 */
         z-index: 10;
       }
 
@@ -82,13 +86,17 @@
         color: #666;
       }
 
+      .social-links {
+        margin-top: 10px;
+        text-align: center;
+      }
+
       .link-list {
         list-style: none;
         display: flex;
         justify-content: center;
         gap: 40px;
         padding: 0;
-        margin-top: 250px;
       }
 
       .link-list a {
@@ -102,16 +110,18 @@
       }
 
       footer {
-        height: 60px; /* 适配底部区域 */
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
+        background-color: #f8f8f8;
         color: #666;
         font-size: 14px;
-        background-color: #f8f8f8;
-        width: 100%;
         text-align: center;
+        z-index: 1;
       }
 
       footer a {
@@ -125,22 +135,20 @@
 
       @media (max-width: 500px) {
         #background-scene {
-          top: 20vh;
-          height: calc(100vh - 40px);
+          top: 25vh;
+          height: 100%;
         }
-        .link-list {
-          display: flex;
-          align-items: center;
-          padding: 0;
-          margin: 130px 0; /* 减小顶部间距 */
-          gap: 20px; /* 减小图标之间的间距 */
+
+        .profile {
+          margin-top: -30vh; /* 在移动端调整为更小的顶部间距 */
+        }
+
+        .social-links {
+          margin-top: 10px;
         }
 
         .link-list a {
           font-size: 20px; /* 调整图标大小以适配小屏幕 */
-        }
-        .profile {
-          margin-top: 25vh; /* 在移动端调整为更小的顶部间距 */
         }
       }
     </style>
@@ -149,7 +157,7 @@
     <div class="content-wrapper">
       <canvas
         id="background-scene"
-        alt="A floc of cute triceratops running in a circle"
+        alt="A flock of cute triceratops running in a circle"
       ></canvas>
 
       <div class="profile">
@@ -164,36 +172,38 @@
         <p><code>npx dong4j --no</code></p>
       </div>
 
-      <ul class="link-list">
-        <li>
-          <a
-            href="https://github.com/dong4j"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><i class="fab fa-github"></i
-          ></a>
-        </li>
-        <li>
-          <a
-            href="https://blog.dong4j.site"
-            target="_blank"
-            rel="noopener noreferrer"
-            ><i class="fas fa-blog"></i
-          ></a>
-        </li>
-      </ul>
-
-      <footer>
-        <p>
-          <a
-            href="https://beian.miit.gov.cn/"
-            target="_blank"
-            rel="noopener noreferrer"
-            >蜀ICP备2025119258号</a
-          >
-        </p>
-      </footer>
+      <div class="social-links">
+        <ul class="link-list">
+          <li>
+            <a
+              href="https://github.com/dong4j"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fab fa-github"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              href="https://blog.dong4j.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fas fa-blog"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
     </div>
+
+    <footer>
+      <p>
+        <a
+          href="https://beian.miit.gov.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >蜀ICP备2025119258号</a
+        >
+      </p>
+    </footer>
 
     <script src="index.js" async></script>
   </body>
