@@ -81,6 +81,11 @@
         height: 180px; /* 头像高度 */
         border-radius: 50%; /* 圆形头像 */
         object-fit: cover; /* 保证头像图片完全覆盖而不变形 */
+        transition: transform 0.3s ease; /* 添加头像缩放过渡 */
+      }
+
+      #profile-picture:hover {
+        transform: scale(1.1); /* 鼠标悬停时头像放大 */
       }
 
       h1,
@@ -111,10 +116,12 @@
         color: #666; /* 设置链接颜色 */
         text-decoration: none; /* 去掉链接下划线 */
         font-size: 24px; /* 设置图标大小 */
+        transition: color 0.3s ease, transform 0.3s ease; /* 添加颜色和缩放过渡 */
       }
 
       .link-list a:hover {
-        text-decoration: underline; /* 鼠标悬停时显示下划线 */
+        color: #4caf50; /* 鼠标悬停时改变颜色 */
+        transform: scale(1.2); /* 鼠标悬停时图标放大 */
       }
 
       footer {
@@ -130,26 +137,38 @@
         font-size: 14px; /* 字号 */
         text-align: center; /* 文字居中 */
         z-index: 1; /* 确保底部在内容之上 */
+        transition: background-color 0.3s ease; /* 添加背景色过渡 */
+      }
+
+      footer:hover {
+        background-color: #e8e8e8; /* 鼠标悬停时更改底部背景色 */
       }
 
       footer a {
         color: #666; /* 设置链接颜色 */
         text-decoration: none; /* 去掉链接下划线 */
+        transition: color 0.3s ease; /* 添加颜色过渡 */
       }
 
       footer a:hover {
-        text-decoration: underline; /* 鼠标悬停时显示下划线 */
+        color: #4caf50; /* 鼠标悬停时改变链接颜色 */
       }
 
       .code-block {
         position: relative; /* 相对定位，确保按钮定位正确 */
         width: 100%;
         max-width: 250px; /* 限制代码框的最大宽度 */
-        margin: 20px 0; /* 上下外边距 */
+        margin: 10px 0; /* 上下外边距 */
+        margin-top: 10px;
       }
 
       .bash {
         border-radius: 8px; /* 给代码框添加圆角 */
+        transition: box-shadow 0.3s ease; /* 添加代码框阴影过渡 */
+      }
+
+      .bash:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 鼠标悬停时添加阴影 */
       }
 
       .copy-btn {
@@ -163,6 +182,7 @@
         padding: 5px 10px; /* 按钮内边距 */
         cursor: pointer; /* 鼠标指针变为手型 */
         border-radius: 5px; /* 按钮圆角 */
+        transition: background-color 0.3s ease; /* 添加按钮颜色过渡 */
       }
 
       .copy-btn:hover {
@@ -185,6 +205,11 @@
 
         .link-list a {
           font-size: 20px; /* 在小屏幕上调整图标大小 */
+        }
+
+        .code-block {
+          margin: 20px 0; /* 上下外边距 */
+          margin-top: -5px;
         }
       }
     </style>
