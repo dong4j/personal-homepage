@@ -37,154 +37,154 @@
     <style>
       body,
       html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: Arial, sans-serif;
+        margin: 0; /* 去除默认边距 */
+        padding: 0; /* 去除默认内边距 */
+        height: 100%; /* 使页面高度占满整个视口 */
+        font-family: Arial, sans-serif; /* 设置字体 */
         overflow: hidden; /* 隐藏滚动条 */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        display: flex; /* 使用弹性布局 */
+        flex-direction: column; /* 垂直排列子元素 */
+        justify-content: space-between; /* 子元素垂直间距分配 */
       }
 
       .content-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        display: flex; /* 使用弹性布局 */
+        flex-direction: column; /* 垂直排列内容 */
+        align-items: center; /* 水平居中内容 */
+        justify-content: center; /* 垂直居中内容 */
         flex-grow: 1; /* 使内容填满剩余空间 */
-        position: relative;
+        position: relative; /* 为了让背景 Canvas 位置相对这个容器 */
       }
 
       #background-scene {
-        position: absolute;
+        position: absolute; /* 背景绝对定位 */
         top: 20vh; /* 使 Canvas 位于页面偏下的位置 */
         left: 0;
         right: 0;
         bottom: 0;
         width: 100%;
         height: 100%;
-        pointer-events: none;
-        z-index: -1;
+        pointer-events: none; /* 禁止背景元素与鼠标交互 */
+        z-index: -1; /* 背景位于内容层的下方 */
       }
 
       .profile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: -50vh; /* 让个人资料在屏幕中间 */
-        z-index: 10;
+        display: flex; /* 使用弹性布局 */
+        flex-direction: column; /* 垂直排列个人资料 */
+        align-items: center; /* 水平居中 */
+        margin-top: -50vh; /* 让个人资料内容居中显示 */
+        z-index: 10; /* 确保个人资料在其他内容之上 */
       }
 
       #profile-picture {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover;
+        width: 180px; /* 头像宽度 */
+        height: 180px; /* 头像高度 */
+        border-radius: 50%; /* 圆形头像 */
+        object-fit: cover; /* 保证头像图片完全覆盖而不变形 */
       }
 
       h1,
       h2,
       p {
-        margin: 10px;
-        color: #333;
+        margin: 10px; /* 设置标题和段落的外边距 */
+        color: #333; /* 设置文字颜色 */
       }
 
       h2 {
-        color: #666;
+        color: #666; /* 设置副标题颜色 */
       }
 
       .social-links {
-        margin-top: -20px;
-        text-align: center;
+        margin-top: -20px; /* 调整社交链接位置 */
+        text-align: center; /* 居中显示社交链接 */
       }
 
       .link-list {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        padding: 0;
+        list-style: none; /* 去掉列表项目符号 */
+        display: flex; /* 使用弹性布局排列社交图标 */
+        justify-content: center; /* 水平居中 */
+        gap: 40px; /* 社交图标之间的间距 */
+        padding: 0; /* 去掉内边距 */
       }
 
       .link-list a {
-        color: #666;
-        text-decoration: none;
-        font-size: 24px; /* 图标大小 */
+        color: #666; /* 设置链接颜色 */
+        text-decoration: none; /* 去掉链接下划线 */
+        font-size: 24px; /* 设置图标大小 */
       }
 
       .link-list a:hover {
-        text-decoration: underline;
+        text-decoration: underline; /* 鼠标悬停时显示下划线 */
       }
 
       footer {
-        position: fixed;
+        position: fixed; /* 固定在页面底部 */
         bottom: 0;
-        width: 100%;
-        height: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #f8f8f8;
-        color: #666;
-        font-size: 14px;
-        text-align: center;
-        z-index: 1;
+        width: 100%; /* 底部横跨整个页面 */
+        height: 40px; /* 底部高度 */
+        display: flex; /* 使用弹性布局 */
+        justify-content: center; /* 居中内容 */
+        align-items: center; /* 垂直居中 */
+        background-color: #f8f8f8; /* 背景颜色 */
+        color: #666; /* 文字颜色 */
+        font-size: 14px; /* 字号 */
+        text-align: center; /* 文字居中 */
+        z-index: 1; /* 确保底部在内容之上 */
       }
 
       footer a {
-        color: #666;
-        text-decoration: none;
+        color: #666; /* 设置链接颜色 */
+        text-decoration: none; /* 去掉链接下划线 */
       }
 
       footer a:hover {
-        text-decoration: underline;
+        text-decoration: underline; /* 鼠标悬停时显示下划线 */
       }
 
       .code-block {
-        position: relative;
+        position: relative; /* 相对定位，确保按钮定位正确 */
         width: 100%;
-        max-width: 250px;
-        margin: 20px 0;
+        max-width: 250px; /* 限制代码框的最大宽度 */
+        margin: 20px 0; /* 上下外边距 */
       }
 
       .bash {
-        border-radius: 8px;
+        border-radius: 8px; /* 给代码框添加圆角 */
       }
 
       .copy-btn {
-        position: absolute;
-        top: 50%;
-        left: 85%;
-        transform: translate(-50%, -50%);
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        border-radius: 5px;
+        position: absolute; /* 绝对定位按钮 */
+        top: 50%; /* 垂直居中 */
+        left: 85%; /* 按钮靠右 */
+        transform: translate(-50%, -50%); /* 调整按钮位置 */
+        background-color: #4caf50; /* 按钮背景颜色 */
+        color: white; /* 按钮文字颜色 */
+        border: none; /* 去掉按钮边框 */
+        padding: 5px 10px; /* 按钮内边距 */
+        cursor: pointer; /* 鼠标指针变为手型 */
+        border-radius: 5px; /* 按钮圆角 */
       }
 
       .copy-btn:hover {
-        background-color: #45a049;
+        background-color: #45a049; /* 鼠标悬停时更改按钮颜色 */
       }
 
       @media (max-width: 500px) {
         #background-scene {
-          top: 25vh;
-          height: 100%;
+          top: 30vh; /* 在移动端调整背景位置 */
+          height: 100%; /* 背景占满整个视口 */
         }
 
         .profile {
-          margin-top: -30vh; /* 在移动端调整为更小的顶部间距 */
+          margin-top: -20vh; /* 在移动端调整个人资料顶部间距 */
         }
 
         .social-links {
-          margin-top: -30px;
+          margin-top: -30px; /* 调整社交链接位置 */
         }
 
         .link-list a {
-          font-size: 20px; /* 调整图标大小以适配小屏幕 */
+          font-size: 20px; /* 在小屏幕上调整图标大小 */
         }
       }
     </style>
@@ -257,8 +257,7 @@
         window.getSelection().addRange(range);
         try {
           document.execCommand("copy");
-        } catch (err) {
-        }
+        } catch (err) {}
         window.getSelection().removeAllRanges();
       }
     </script>
