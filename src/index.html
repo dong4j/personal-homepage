@@ -100,7 +100,7 @@
       }
 
       .social-links {
-        margin-top: -20px; /* 调整社交链接位置 */
+        margin-top: -10px; /* 调整社交链接位置 */
         text-align: center; /* 居中显示社交链接 */
       }
 
@@ -196,7 +196,7 @@
         }
 
         .profile {
-          margin-top: -20vh; /* 在移动端调整个人资料顶部间距 */
+          margin-top: 20vh; /* 在移动端调整个人资料顶部间距 */
         }
 
         .social-links {
@@ -209,7 +209,32 @@
 
         .code-block {
           margin: 20px 0; /* 上下外边距 */
-          margin-top: -5px;
+          margin-top: -10px;
+        }
+      }
+      /* 为 iPad 屏幕尺寸调整 */
+      @media (max-width: 1024px) {
+        .profile {
+          margin-top: -20vh; /* 调整为负值，让内容向下移动，确保头像显示完整 */
+        }
+
+        #profile-picture {
+          width: 200px; /* 增大头像尺寸 */
+          height: 200px; /* 增大头像尺寸 */
+        }
+
+        h1,
+        h2,
+        p {
+          margin: 8px; /* 适当调整文字间距 */
+        }
+
+        .link-list a {
+          font-size: 22px; /* 调整社交链接图标的大小 */
+        }
+
+        .social-links {
+          margin-top: -15px; /* 调整社交链接的垂直位置 */
         }
       }
     </style>
