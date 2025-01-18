@@ -26,6 +26,14 @@
       data-host-url="https://umami.dong4j.ink:1024"
       data-website-id="12e71a61-916b-493a-82b1-9138286e73ae"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
     <style>
       body,
       html {
@@ -50,7 +58,7 @@
 
       #background-scene {
         position: absolute;
-        top: 20vh;
+        top: 20vh; /* 使 Canvas 位于页面偏下的位置 */
         left: 0;
         right: 0;
         bottom: 0;
@@ -87,7 +95,7 @@
       }
 
       .social-links {
-        margin-top: 10px;
+        margin-top: -20px;
         text-align: center;
       }
 
@@ -133,6 +141,34 @@
         text-decoration: underline;
       }
 
+      .code-block {
+        position: relative;
+        width: 100%;
+        max-width: 250px;
+        margin: 20px 0;
+      }
+
+      .bash {
+        border-radius: 8px;
+      }
+
+      .copy-btn {
+        position: absolute;
+        top: 50%;
+        left: 85%;
+        transform: translate(-50%, -50%);
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .copy-btn:hover {
+        background-color: #45a049;
+      }
+
       @media (max-width: 500px) {
         #background-scene {
           top: 25vh;
@@ -144,7 +180,7 @@
         }
 
         .social-links {
-          margin-top: 10px;
+          margin-top: -30px;
         }
 
         .link-list a {
@@ -169,7 +205,11 @@
         <h1>dong4j</h1>
         <h2>Gifted web developer</h2>
         <p>👇 Hit in your console or terminal to connect with me.</p>
-        <p><code>npx dong4j --no</code></p>
+
+        <div class="code-block">
+          <pre><code class="bash">npx dong4j --no</code></pre>
+          <button class="copy-btn" onclick="copyCode()">Copy</button>
+        </div>
       </div>
 
       <div class="social-links">
@@ -191,6 +231,7 @@
             ></a>
           </li>
         </ul>
+        <p>A flock of cute triceratops running in a circle...</p>
       </div>
     </div>
 
@@ -206,5 +247,20 @@
     </footer>
 
     <script src="index.js" async></script>
+
+    <script>
+      function copyCode() {
+        const code = document.querySelector(".code-block code");
+        const range = document.createRange();
+        range.selectNode(code);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        try {
+          document.execCommand("copy");
+        } catch (err) {
+        }
+        window.getSelection().removeAllRanges();
+      }
+    </script>
   </body>
 </html>
