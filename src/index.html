@@ -1,61 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>dong4j homepage</title>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+    <title>dong4j homepage</title>
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://home.dong4j.site" />
     <meta property="og:title" content="dong4j homepage" />
     <meta property="og:description" content="dong4j, gifted web developer." />
-    <meta property="og:email" content="dong4j@gmail.com" />
     <meta property="og:image" content="assets/img/avatar.webp" />
     <meta property="og:image:width" content="460" />
     <meta property="og:image:height" content="460" />
     <meta name="description" content="dong4j, gifted web developer." />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <script defer src="https://cdn.dong4j.site/source/static/umami.self.js" data-host-url="https://umami.dong4j.ink:1024" data-website-id="12e71a61-916b-493a-82b1-9138286e73ae"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.dong4j.site/source/static/umami.self.js"
+      data-host-url="https://umami.dong4j.ink:1024"
+      data-website-id="12e71a61-916b-493a-82b1-9138286e73ae"
+    ></script>
     <style>
       body,
       html {
         margin: 0;
         padding: 0;
         height: 100%;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family: Arial, sans-serif;
+        overflow-y: hidden; /* 隐藏垂直滚动条 */
       }
 
       .content-wrapper {
-        min-height: calc(100% - 60px); /* Adjust based on footer height */
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 40px;
+        justify-content: space-between;
+        gap: 10px;
+        min-height: 100vh; /* 确保占据整个视口高度 */
       }
 
       #background-scene {
         position: absolute;
-        top: 45px;
+        top: 5vh;
         left: 0;
         right: 0;
         bottom: 0;
-        width: 100vw;
+        width: 100%;
         height: calc(100vh - 45px);
         pointer-events: none;
         z-index: -1;
+      }
+
+      @media (max-width: 500px) {
+        #background-scene {
+          gap: 10px; /* 减小间距以适应小屏幕 */
+          top: 20vh;
+          height: calc(100vh - 40px);
+        }
+        .link-list {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          padding: 0;
+          position: relative;
+          margin-top: 250px;
+        }
       }
 
       .profile {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-        margin-top: -60vh; /* Position profile 10% from the top of the viewport */
-        position: relative;
-        z-index: 10; /* Ensure profile is above the background */
+        margin-top: 10vh; /* Position profile in the middle of viewport */
+        z-index: 10;
       }
 
       #profile-picture {
@@ -68,7 +92,7 @@
       h1,
       h2,
       p {
-        margin: 0;
+        margin: 10px;
         color: #333;
       }
 
@@ -83,16 +107,26 @@
         gap: 40px;
         padding: 0;
         position: relative;
+        margin-top: 250px;
       }
 
-      .link-list::before {
+      /* .link-list::before {
         content: "";
         position: absolute;
-        top: -20px;
-        width: calc(100vw - 20px);
-        max-width: 360px;
+        top: -15px;
+        width: calc(100vw - 80px);
         height: 1px;
         background-color: #ddd;
+      } */
+
+      .link-list a {
+        color: #666;
+        text-decoration: none;
+        font-size: 24px; /* 增加图标大小 */
+      }
+
+      .link-list a:hover {
+        text-decoration: underline;
       }
 
       footer {
@@ -116,19 +150,13 @@
       footer a:hover {
         text-decoration: underline;
       }
-
-      @media (max-width: 500px) {
-        .link-list {
-          flex-direction: column;
-        }
-      }
     </style>
   </head>
   <body>
     <div class="content-wrapper">
       <canvas
         id="background-scene"
-        alt="a floc of cute triceratops running in circle"
+        alt="A floc of cute triceratops running in a circle"
       ></canvas>
 
       <div class="profile">
@@ -149,30 +177,30 @@
             href="https://github.com/dong4j"
             target="_blank"
             rel="noopener noreferrer"
-            >GitHub</a
-          >
+            ><i class="fab fa-github"></i
+          ></a>
         </li>
         <li>
           <a
             href="https://blog.dong4j.site"
             target="_blank"
             rel="noopener noreferrer"
-            >Blog</a
-          >
+            ><i class="fas fa-blog"></i
+          ></a>
         </li>
       </ul>
-    </div>
 
-    <footer>
-      <p>
-        <a
-          href="https://beian.miit.gov.cn/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >蜀ICP备2025119258号</a
-        >
-      </p>
-    </footer>
+      <footer>
+        <p>
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >蜀ICP备2025119258号</a
+          >
+        </p>
+      </footer>
+    </div>
 
     <script src="index.js" async></script>
   </body>
