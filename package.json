@@ -1,0 +1,25 @@
+{
+  "name": "platane.github.io",
+  "version": "3.0.0",
+  "repository": "github:platane/platane.github.io",
+  "description": "Arthur Brongniart, gifted web developer.",
+  "author": {
+    "name": "Platane"
+  },
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "gl-matrix": "3.4.3",
+    "jurassic-nursery": "git://github.com/platane/jurassic-nursery#19315f0"
+  },
+  "devDependencies": {
+    "bun-types": "1.0.31",
+    "chokidar": "3.6.0",
+    "typescript": "5.4.2"
+  },
+  "scripts": {
+    "build:model": "mkdir ./node_modules/jurassic-nursery/packages/game/assets -p ; curl --location --output ./node_modules/jurassic-nursery/packages/game/assets/geometry.bin https://platane.github.io/jurassic-nursery/0",
+    "build": "bun scripts/build.ts",
+    "dev": "bun scripts/dev.ts"
+  }
+}

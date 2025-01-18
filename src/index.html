@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>dong4j homepage</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dong4j.site" />
+    <meta property="og:title" content="dong4j homepage" />
+    <meta property="og:description" content="dong4j, gifted web developer." />
+    <meta property="og:email" content="dong4j@gmail.com" />
+    <meta property="og:image" content="assets/img/avatar.webp" />
+    <meta property="og:image:width" content="460" />
+    <meta property="og:image:height" content="460" />
+    <meta name="description" content="dong4j, gifted web developer." />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      .content-wrapper {
+        min-height: calc(100% - 60px); /* Adjust based on footer height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+      }
+
+      #background-scene {
+        position: absolute;
+        top: 45px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw;
+        height: calc(100vh - 45px);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      #profile-picture {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+        color: #333;
+      }
+
+      h2 {
+        color: #666;
+      }
+
+      .link-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        padding: 0;
+        position: relative;
+      }
+
+      .link-list::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        width: calc(100vw - 20px);
+        max-width: 360px;
+        height: 1px;
+        background-color: #ddd;
+      }
+
+      footer {
+        height: 60px; /* Adjust based on your needs */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #666;
+        font-size: 14px;
+        background-color: #f8f8f8;
+        width: 100%;
+        text-align: center;
+      }
+
+      footer a {
+        color: #666;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 500px) {
+        .link-list {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <canvas
+        id="background-scene"
+        alt="a floc of cute triceratops running in circle"
+      ></canvas>
+
+      <div class="profile">
+        <img
+          id="profile-picture"
+          src="assets/img/avatar.webp"
+          alt="dong4j profile picture"
+        />
+        <h1>dong4j</h1>
+        <h2>Gifted web developer</h2>
+        <p>👇 Hit in your console or terminal to connect with me.</p>
+        <p><code>npx dong4j --no</code></p>
+      </div>
+
+      <ul class="link-list">
+        <li>
+          <a
+            href="https://github.com/dong4j"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://blog.dong4j.site"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Blog</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>
+        <a
+          href="https://beian.miit.gov.cn/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >备案号：蜀ICP备2025119258号</a
+        >
+      </p>
+    </footer>
+
+    <script src="index.js" async></script>
+  </body>
+</html>
