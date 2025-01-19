@@ -55,6 +55,11 @@ Bun 是一个现代化的 JavaScript 运行时和工具链，它具有以下特�
 - Bun - JavaScript 运行时和工具链
 - TypeScript - 类型安全的 JavaScript 超集
 
+##  Todo
+
+- [x] 完成个人主页的基本功能
+- [ ] 添加 sitemap
+
 ## 来源
 
 [platane Homepage ( platane.github.io )](https://github.com/Platane/Platane.github.io)
