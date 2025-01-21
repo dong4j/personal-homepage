@@ -26,6 +26,14 @@
       data-host-url="https://umami.dong4j.ink:1024"
       data-website-id="12e71a61-916b-493a-82b1-9138286e73ae"
     ></script>
+    <script
+      src="https://umami.dong4j.ink:1024/counter/embed.min.js"
+      async=""
+      id="online-counter"
+      interval="60000"
+      api="https://umami.dong4j.ink:1024/counter"
+      room="000000001"
+    ></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css"
@@ -237,6 +245,32 @@
           margin-top: -15px; /* 调整社交链接的垂直位置 */
         }
       }
+
+      /* 定义在线人数的指示灯样式 */
+      .indicator {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%; /* 圆形 */
+        background-color: green; /* 默认红色 */
+        margin-left: 0px;
+        animation: subtle-breathing 1.2s infinite; /* 呼吸动画 */
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* 初始光晕 */
+      }
+
+      @keyframes subtle-breathing {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+          box-shadow: 0 0 5px rgba(255, 0, 0, 0.8); /* 光晕正常 */
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(0.95);
+          box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* 光晕稍大且更淡 */
+        }
+      }
     </style>
   </head>
   <body>
@@ -292,16 +326,20 @@
         <p>A flock of cute triceratops running in a circle...</p>
       </div>
     </div>
-
     <footer>
-      <p>
-        <a
-          href="https://beian.miit.gov.cn/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >蜀ICP备2025119258号</a
-        >
-      </p>
+      <div style="display: flex; align-items: center; gap: 10px">
+        <p style="margin: 0">
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >蜀ICP备2025119258号</a
+          >
+        </p>
+        <span>Online:</span>
+        <span id="online_user" style="font-size: 1em; font-weight: bold">1</span>
+        <span id="indicator" class="indicator"></span>
+      </div>
     </footer>
 
     <script src="index.js" async></script>
