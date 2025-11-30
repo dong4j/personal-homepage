@@ -29,7 +29,7 @@ LOCAL_DIR="dist"
 # 检查目录是否存在
 if [ ! -d "$LOCAL_DIR" ]; then
   echo "$LOCAL_DIR 目录不存在，正在执行 bun run build 以生成最新的文件..."
-  bun run build
+  bun install && bun build:model && bun run build
 
   # 再次检查目录是否生成成功
   if [ ! -d "$LOCAL_DIR" ]; then
