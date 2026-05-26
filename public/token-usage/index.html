@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Token 统计 · dong4j</title>
+    <meta
+      name="description"
+      content="dong4j 的本地 AI 编程工具 TokenTracker 用量统计快照。"
+    />
+    <link rel="stylesheet" href="./token-usage.css" />
+  </head>
+  <body>
+    <main class="tt-shell" data-state="loading">
+      <header class="tt-header">
+        <a class="tt-brand" href="/" aria-label="Back home">
+          <span class="tt-brand-icon">↯</span>
+          <span>Token 统计</span>
+        </a>
+        <div class="tt-header-meta">
+          <span id="tt-updated-at">正在加载快照…</span>
+          <button class="tt-icon-action" id="tt-share" type="button" aria-label="分享统计页面">
+            ↗ 分享
+          </button>
+          <button class="tt-icon-action" id="tt-refresh" type="button" aria-label="刷新快照">
+            ↻
+          </button>
+          <a class="tt-source-link" href="https://github.com/mm7894215/TokenTracker" target="_blank" rel="noreferrer">TokenTracker</a>
+        </div>
+      </header>
+
+      <section class="tt-layout" aria-live="polite">
+        <aside class="tt-side">
+          <section class="tt-card tt-rank-card">
+            <div class="tt-mini-stats">
+              <div>
+                <strong id="tt-last7">0</strong>
+                <span>7 日</span>
+              </div>
+              <div>
+                <strong id="tt-last30">0</strong>
+                <span>30 日</span>
+              </div>
+              <div>
+                <strong id="tt-average">0</strong>
+                <span>日均</span>
+              </div>
+              <div>
+                <strong id="tt-convs">0</strong>
+                <span>月对话</span>
+              </div>
+            </div>
+            <div class="tt-top-models" id="tt-top-models"></div>
+            <div class="tt-card-foot">
+              <span>开始 <b id="tt-started">-</b></span>
+              <span>活跃天数 <b id="tt-active-days">0</b> 天</span>
+            </div>
+          </section>
+
+          <section class="tt-card">
+            <div class="tt-section-title">
+              <h2>热力图</h2>
+              <span id="tt-timezone">UTC+08:00</span>
+            </div>
+            <div id="tt-heatmap" class="tt-heatmap"></div>
+            <div class="tt-legend">
+              <span>Less</span>
+              <i class="tt-level-0"></i>
+              <i class="tt-level-1"></i>
+              <i class="tt-level-2"></i>
+              <i class="tt-level-3"></i>
+              <i class="tt-level-4"></i>
+              <span>More</span>
+            </div>
+          </section>
+
+          <section class="tt-card">
+            <div class="tt-section-title">
+              <h2>使用趋势</h2>
+            </div>
+            <div id="tt-trend" class="tt-trend" aria-label="使用趋势"></div>
+            <div class="tt-trend-axis">
+              <span id="tt-trend-from">-</span>
+              <span id="tt-trend-to">-</span>
+            </div>
+          </section>
+        </aside>
+
+        <section class="tt-main">
+          <section class="tt-card tt-hero-card">
+            <div class="tt-tabs" id="tt-tabs" role="tablist" aria-label="统计区间">
+              <button type="button" class="is-active" data-period="day">日</button>
+              <button type="button" data-period="week">周</button>
+              <button type="button" data-period="month">月</button>
+              <button type="button" data-period="total">总计</button>
+              <button type="button" data-period="custom" disabled>自定义</button>
+            </div>
+
+            <div class="tt-hero-metric">
+              <span>TOKEN 总数</span>
+              <strong id="tt-total">0</strong>
+              <em id="tt-cost">$0.00</em>
+            </div>
+
+            <div class="tt-source-bar" id="tt-source-bar"></div>
+            <div class="tt-source-grid" id="tt-source-grid"></div>
+          </section>
+
+          <section class="tt-card tt-table-card">
+            <div class="tt-table-tabs">
+              <span>每日细目</span>
+            </div>
+            <div class="tt-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>日期</th>
+                    <th>Total</th>
+                    <th>输入</th>
+                    <th>输出</th>
+                    <th>缓存</th>
+                    <th>推理</th>
+                    <th>对话数</th>
+                  </tr>
+                </thead>
+                <tbody id="tt-daily-rows"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <section class="tt-error" id="tt-error" hidden>
+        <h1>快照不可用</h1>
+        <p>请确认 `usage-snapshot.json` 已经生成并上传，或通过 `?data=` 指定公网 JSON 地址。</p>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+    <script src="./token-usage.js"></script>
+  </body>
+</html>
