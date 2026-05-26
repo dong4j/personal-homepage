@@ -483,7 +483,7 @@
         <span>Online:</span>
         <span id="online_user" style="font-size: 1em; font-weight: bold">1</span>
         <span style="color: #666;">|</span>
-        <span style="color: #888;">实时:</span>
+        <span style="color: #888;">Active:</span>
         <span id="wakatime-display" style="display: inline-block; overflow: hidden; color: #4caf50; font-weight: 600;">
           <span id="wakatime-text" style="display: block; transition: transform 0.3s ease;"></span>
         </span>
@@ -508,7 +508,7 @@
       async function fetchBlogFeed() {
         try {
           const response = await fetch('https://blog.dong4j.site/rss2.json');
-          const items = await response.json();
+          const items = (await response.json()).slice(0, 5);
 
           const cards = items.map(item => {
             const title = item.title;
@@ -548,9 +548,6 @@
 
       fetchBlogFeed();
 
-      const mockData = ['iTerm2', 'OpenCode', 'Safari', 'VS Code', '微信', '音乐', 'Finder'];
-      let mockIndex = 0;
-
       function showWakatime(appName) {
         const textEl = document.getElementById('wakatime-text');
         textEl.style.transform = 'translateY(-100%)';
@@ -563,19 +560,25 @@
         }, 300);
       }
 
-      function mockSSE() {
-        if (mockIndex < mockData.length) {
-          showWakatime(mockData[mockIndex]);
-          mockIndex++;
-          setTimeout(mockSSE, 3000);
-        }
+      function connectWakatimeSSE() {
+        const es = new EventSource('https://sse.dong4j.site/api/wakatime/stream');
+        es.onmessage = (event) => {
+          try {
+            const data = JSON.parse(event.data);
+            if (data.to) {
+              showWakatime(data.to);
+            }
+          } catch {}
+        };
+        es.onerror = () => {
+          es.close();
+          setTimeout(connectWakatimeSSE, 5000);
+        };
       }
 
       if (document.getElementById('wakatime-text')) {
-        mockSSE();
+        connectWakatimeSSE();
       }
-
-      mockSSE();
     </script>
   </body>
 </html>
