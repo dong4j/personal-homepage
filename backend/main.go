@@ -22,10 +22,10 @@ import (
 
 const (
 	// MQTT 配置 - M2 服务器地址
-	mqttBroker      = "tcp://192.168.21.5:1883"
-	mqttTopic       = "wakatime/activity"
-	mqttTokenTopic  = "tokentracker/token-usage" // Token 用量 topic
-	mqttClientID    = "wakatime-publisher"
+	mqttBroker     = "tcp://192.168.31.5:1883"
+	mqttTopic      = "wakatime/activity"
+	mqttTokenTopic = "tokentracker/token-usage" // Token 用量 topic
+	mqttClientID   = "wakatime-publisher"
 
 	// Token 数据文件路径
 	tokenQueuePath = "/Users/dong4j/.tokentracker/tracker/queue.jsonl"
@@ -38,7 +38,7 @@ const (
 type TokenUsage struct {
 	Date        string `json:"date"`         // 北京日期 YYYY-MM-DD
 	TotalTokens int64  `json:"total_tokens"` // 今日总 token 数
-	Time        string `json:"time"`          // 发布时间
+	Time        string `json:"time"`         // 发布时间
 }
 
 type AppChange struct {
@@ -48,7 +48,7 @@ type AppChange struct {
 }
 
 var (
-	mqttClient mqtt.Client
+	mqttClient     mqtt.Client
 	appChangeRegex = regexp.MustCompile(`(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}).*App changed from (.+) to (.+?) \(`)
 )
 
