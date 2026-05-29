@@ -22,7 +22,7 @@ import (
 
 const (
 	// MQTT 配置 - M2 服务器地址
-	mqttBroker     = "tcp://192.168.31.5:1883"
+	mqttBroker     = "tcp://192.168.21.5:1883"
 	mqttTopic      = "wakatime/activity"
 	mqttTokenTopic = "tokentracker/token-usage" // Token 用量 topic
 	mqttClientID   = "wakatime-publisher"
